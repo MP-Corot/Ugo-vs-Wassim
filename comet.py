@@ -42,9 +42,9 @@ class Comet(pygame.sprite.Sprite):
 
     def move_bot(self):
 
-        if self.game.check_collision(self, self.game.all_player):
+        if self.game.check_collision(self, self.game.all_players):
             self.game.player.taking_dmg(self.dmg)
-            self.game.all_comet.remove()
+            self.game.all_comets.remove()
 
         elif self.rect.y > 900:
             self.rect.y = -10

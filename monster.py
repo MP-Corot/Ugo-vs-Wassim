@@ -35,14 +35,14 @@ class Monster(pygame.sprite.Sprite):
         self.atk = 0.1
         self.velocity = random.randint(1, 2)
         self.image = pygame.image.load('PygameAssets-main/wassim.png')
-        self.image = pygame.transform.scale(self.image,(100,100))
+        self.image = pygame.transform.scale(self.image, (100, 100))
         self.rect = self.image.get_rect()
         self.rect.x = 950 + random.randint(0, 200)
         self.rect.y = 550
         self.game = game
 
     def forward(self):
-        if not self.game.check_collision(self, self.game.all_player):
+        if not self.game.check_collision(self, self.game.all_players):
             if random.random() > 0.2:
                 self.rect.x -= self.velocity
         else:
@@ -59,7 +59,8 @@ class Monster(pygame.sprite.Sprite):
             self.velocity = random.randint(1, 2)
             self.game.score += 1
 
-
     def update_hp_bar(self, surface):
-        pygame.draw.rect(surface, (89, 96, 81), [self.rect.x + 10, self.rect.y - 5, self.max_hp, 5])
-        pygame.draw.rect(surface, (140, 227, 35), [self.rect.x + 10, self.rect.y - 5, self.hp, 5])
+        new_x = self.rect.x + 10
+        new_y = self.rect.y - 5
+        pygame.draw.rect(surface, (89, 96, 81), [new_x, new_y, self.max_hp, 5])
+        pygame.draw.rect(surface, (140, 227, 35), [new_x, new_y, self.hp, 5])
