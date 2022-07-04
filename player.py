@@ -27,7 +27,6 @@ from projectile import Projectile
 
 
 class Player(pygame.sprite.Sprite):
-
     def __init__(self, game):
         super().__init__()
         self.hp = 100
@@ -36,14 +35,14 @@ class Player(pygame.sprite.Sprite):
         self.atk = 25
         self.speed = 1
         self.all_projectiles = pygame.sprite.Group()
-        self.image = pygame.image.load('PygameAssets-main/ugo.png')
-        self.image = pygame.transform.scale(self.image,(160,160))
+        self.image = pygame.image.load("PygameAssets-main/ugo.png")
+        self.image = pygame.transform.scale(self.image, (160, 160))
         self.rect = self.image.get_rect()
         self.rect.x = 450
         self.rect.y = 500
 
     def taking_dmg(self, nb_dmg):
-        if self.hp - nb_dmg > 0:
+        if self.hp > nb_dmg:
             self.hp -= nb_dmg
         elif self.game.is_playing:
             self.game.game_over()
@@ -56,7 +55,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.x -= self.speed
 
     def jump(self, t):
-        ypos = 10 * (t ** 2) - 100 * t + 500
+        ypos = 10 * (t**2) - 100 * t + 500
         if ypos > 500:
             self.rect.y = 500
         else:
@@ -67,5 +66,7 @@ class Player(pygame.sprite.Sprite):
         self.all_projectiles.add(projectile)
 
     def update_hp_bar(self, surface):
-        pygame.draw.rect(surface, (89, 96, 81), [self.rect.x + 50, self.rect.y + 20, self.max_hp, 8])
-        pygame.draw.rect(surface, (140, 227, 35), [self.rect.x + 50, self.rect.y + 20, self.hp, 8])
+        new_x = self.rect.x + 50
+        new_y = self.rect.y + 20
+        pygame.draw.rect(surface, (89, 96, 81), [new_x, new_y, self.max_hp, 8])
+        pygame.draw.rect(surface, (140, 227, 35), [new_x, new_y, self.hp, 8])

@@ -1,27 +1,3 @@
-"""
-MIT License
-
-Copyright (c) 2022 MP-Corot
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-"""
-
 import pygame
 
 from player import Player
@@ -34,19 +10,19 @@ class Game:
     def __init__(self):
 
         # joueur
-        self.all_player = pygame.sprite.Group()
+        self.all_players = pygame.sprite.Group()
         self.player = Player(self)
-        self.all_player.add(self.player)
+        self.all_players.add(self.player)
         self.pressed = {}
 
         self.is_playing = False
         self.score = 0
         self.all_monster = pygame.sprite.Group()
-        self.all_comet = pygame.sprite.Group()
+        self.all_comets = pygame.sprite.Group()
 
     def summon_commet(self):
         self.commet = Comet(self)
-        self.all_comet.add(self.commet)
+        self.all_comets.add(self.commet)
 
     def summon_monster(self):
         monster = Monster(self)
@@ -71,13 +47,14 @@ class Game:
         self.player.rect.x = 200
         self.is_playing = False
         self.all_monster = pygame.sprite.Group()
-        self.all_comet = pygame.sprite.Group()
+        self.all_comets = pygame.sprite.Group()
         self.pressed = {}
         print(self.score)
         self.score = 0
 
     def start(self):
         self.is_playing = True
+
         self.summon_monster()
         self.summon_monster()
         self.summon_monster()
@@ -106,8 +83,8 @@ class Game:
 
         # comet
 
-        self.all_comet.draw(surface)
-        for comet in self.all_comet:
+        self.all_comets.draw(surface)
+        for comet in self.all_comets:
             comet.move_bot()
 
         for event in pygame.event.get():
