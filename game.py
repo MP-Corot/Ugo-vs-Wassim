@@ -81,6 +81,7 @@ class Game:
         self.all_monsters = pygame.sprite.Group()
         self.all_comets = pygame.sprite.Group()
         self.pressed = {}
+        self.bossBar_percent = 0
         print(self.score)
         self.score = 0
 
