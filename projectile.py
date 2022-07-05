@@ -44,7 +44,7 @@ class Projectile(pygame.sprite.Sprite):
         self.rect.x += self.speed
         self.rotate()
 
-        for monster in self.player.game.check_collision(self, self.player.game.all_monster):
+        for monster in self.player.game.check_collision(self, self.player.game.all_monsters):
             monster.taking_dmg(self.player.atk)
             self.remove()
 
