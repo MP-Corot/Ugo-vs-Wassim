@@ -1,8 +1,12 @@
 # Ignore everything
 *
 
-# Whitelisting assets
+# keep assets
 !PygameAssets-main
 
-# Whitelisting source files
+# keep source files
 *!.py
+
+# misc
+!.gitignore
+!tox.ini

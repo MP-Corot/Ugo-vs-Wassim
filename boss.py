@@ -33,7 +33,7 @@ class Boss(pygame.sprite.Sprite):
         self.max_hp = 250
         self.hp = self.max_hp
         self.atk = 30
-        self.image = pygame.image.load('PygameAssets-main\mxccp.png')
+        self.image = pygame.image.load('PygameAssets-main/mxccp.png')
         self.rect = self.image.get_rect()
         self.rect.x = 900
         self.rect.y = 400

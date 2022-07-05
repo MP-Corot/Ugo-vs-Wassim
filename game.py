@@ -30,7 +30,6 @@ from comet import Comet
 
 
 class Game:
-
     def __init__(self):
 
         # joueur
@@ -43,14 +42,19 @@ class Game:
         self.score = 0
         self.all_monsters = pygame.sprite.Group()
         self.all_comets = pygame.sprite.Group()
-        self.bossBar_percent = 0
+        self.bossbar_percent = 0
 
     def update_bar(self, surface):
 
-        # arrière plan
-        pygame.draw.rect(surface,(0,0,0),[0,surface.get_height()-10,surface.get_width(),10])
-        # bar
-        pygame.draw.rect(surface,(53, 157, 209),[0,surface.get_height()-10,surface.get_width()*self.bossBar_percent/100,10])
+        # background
+        black = (0, 0, 0)
+        bg_rect = pygame.Rect(0, surface.get_height() - 10, surface.get_width(), 10)
+        pygame.draw.rect(surface, black, bg_rect)
+
+        # hp bar
+        blue = (53, 157, 209)
+        rect = pygame.Rect(0, surface.get_height() - 10, surface.get_width() * self.bossbar_percent / 100, 10)
+        pygame.draw.rect(surface, blue, rect)
 
     def summon_commet(self):
         self.commet = Comet(self)
@@ -72,7 +76,9 @@ class Game:
         return t
 
     def check_collision(self, sprite, group):
-        return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
+        return pygame.sprite.spritecollide(
+            sprite, group, False, pygame.sprite.collide_mask
+        )
 
     def game_over(self):
         self.player.hp = self.player.max_hp
@@ -88,12 +94,11 @@ class Game:
     def start(self):
         self.is_playing = True
 
-        self.summon_monster()
-        self.summon_monster()
-        self.summon_monster()
+        for _ in range(3):
+            self.summon_monster()
 
-        self.summon_commet()
-        self.summon_commet()
+        for _ in range(2):
+            self.summon_commet()
 
     def update(self, surface, img):
 

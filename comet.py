@@ -28,12 +28,11 @@ import pygame
 
 
 class Comet(pygame.sprite.Sprite):
-
     def __init__(self, game):
         super(Comet, self).__init__()
         self.dmg = 0.3
         self.velocity = 1
-        self.image = pygame.image.load('PygameAssets-main/benalia.png')
+        self.image = pygame.image.load("PygameAssets-main/benalia.png")
         self.image = pygame.transform.scale(self.image, (100, 100))
         self.rect = self.image.get_rect()
         self.rect.y = -10
@@ -49,7 +48,7 @@ class Comet(pygame.sprite.Sprite):
         elif self.rect.y > 900:
             self.rect.y = -10
             self.rect.x = random.randint(0, 700)
-            self.velocity = random.randint(1,2)
+            self.velocity = random.randint(1, 2)
 
         else:
             self.rect.y += self.velocity
