@@ -41,7 +41,7 @@ class Game:
 
         self.is_playing = False
         self.score = 0
-        self.all_monster = pygame.sprite.Group()
+        self.all_monsters = pygame.sprite.Group()
         self.all_comets = pygame.sprite.Group()
         self.bossBar_percent = 0
 
@@ -58,7 +58,7 @@ class Game:
 
     def summon_monster(self):
         monster = Monster(self)
-        self.all_monster.add(monster)
+        self.all_monsters.add(monster)
 
     def movement(self, t):
 
@@ -78,7 +78,7 @@ class Game:
         self.player.hp = self.player.max_hp
         self.player.rect.x = 200
         self.is_playing = False
-        self.all_monster = pygame.sprite.Group()
+        self.all_monsters = pygame.sprite.Group()
         self.all_comets = pygame.sprite.Group()
         self.pressed = {}
         print(self.score)
@@ -109,8 +109,8 @@ class Game:
             projectile.move()
 
         # monster
-        self.all_monster.draw(surface)
-        for monster_el in self.all_monster:
+        self.all_monsters.draw(surface)
+        for monster_el in self.all_monsters:
             monster_el.forward()
             monster_el.update_hp_bar(surface)
 
