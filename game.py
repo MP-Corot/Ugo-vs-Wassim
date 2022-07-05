@@ -43,6 +43,14 @@ class Game:
         self.score = 0
         self.all_monsters = pygame.sprite.Group()
         self.all_comets = pygame.sprite.Group()
+        self.bossBar_percent = 0
+
+    def update_bar(self, surface):
+
+        # arrière plan
+        pygame.draw.rect(surface,(0,0,0),[0,surface.get_height()-10,surface.get_width(),10])
+        # bar
+        pygame.draw.rect(surface,(53, 157, 209),[0,surface.get_height()-10,surface.get_width()*self.bossBar_percent/100,10])
 
     def summon_commet(self):
         self.commet = Comet(self)
@@ -92,6 +100,7 @@ class Game:
 
         surface.blit(self.player.image, self.player.rect)
         self.player.update_hp_bar(surface)
+        self.update_bar(surface)
 
         # projectile
 
