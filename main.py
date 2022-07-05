@@ -20,7 +20,7 @@ if __name__ == '__main__':
     banner_rect.x = math.ceil(screen.get_width() / 4)
 
     # button
-    button = pygame.image.load("PygameAssets-main/button.png")
+    button = pygame.image.load("PygameAssets-main/button.png") 
     button = pygame.transform.scale(button, (400, 150))
     button_rect = button.get_rect()
     button_rect.x = math.ceil(screen.get_width() / 3.33)

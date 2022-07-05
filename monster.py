@@ -34,6 +34,7 @@ class Monster(pygame.sprite.Sprite):
             self.hp = self.max_hp
             self.velocity = random.randint(1, 2)
             self.game.score += 1
+            self.game.add_percent(1)
 
 
     def update_hp_bar(self, surface):

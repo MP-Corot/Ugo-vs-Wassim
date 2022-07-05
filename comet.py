@@ -7,6 +7,7 @@ class Comet(pygame.sprite.Sprite):
 
     def __init__(self, game):
         super(Comet, self).__init__()
+
         self.dmg = 0.3
         self.velocity = 1
         self.image = pygame.image.load('PygameAssets-main/comet.png')
