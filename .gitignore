@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# Whitelisting assets
+!PygameAssets-main
+
+# Whitelisting source files
+*!.py
